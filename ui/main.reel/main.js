@@ -7,14 +7,6 @@ var LOCAL_STORAGE_KEY = 'todos-montage';
 
 exports.Main = Component.specialize({
 
-    _newTodoForm: {
-        value: null
-    },
-
-    _newTodoInput: {
-        value: null
-    },
-
     todoListController: {
         value: null
     },
@@ -75,8 +67,6 @@ exports.Main = Component.specialize({
     enterDocument: {
         value: function (firstTime) {
             if (firstTime) {
-                this._newTodoForm.identifier = 'newTodoForm';
-                this._newTodoForm.addEventListener('submit', this, false);
 
                 this.addEventListener('destroyTodo', this, true);
 
@@ -133,21 +123,21 @@ exports.Main = Component.specialize({
     todosCompleted: {
         value: null
     },
-
+    
     // Handlers
 
-    handleNewTodoFormSubmit: {
+    handleNewTodoFieldAction: {
         value: function (evt) {
             evt.preventDefault();
-
-            var title = this._newTodoInput.value.trim();
-
+    
+            var title = evt.target.value.trim();
+    
             if (title === '') {
                 return;
             }
-
+    
             this.createTodo(title);
-            this._newTodoInput.value = null;
+            evt.target.value = null;
         }
     },
 
