@@ -1,3 +1,3 @@
-#montage-todomvc .visible {
+#montage-todomvc .visible, #montage-todomvc .main-visible #main, #montage-todomvc .footer-visible footer, #montage-todomvc .clear-completed-visible #clear-completed-container{
     display: block;
 }

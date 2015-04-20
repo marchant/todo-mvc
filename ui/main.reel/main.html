@@ -13,6 +13,17 @@
                     "element": {"#": "mainComponent"},
                     "_newTodoForm": {"#": "newTodoForm"},
                     "_newTodoInput": {"#": "newTodoField"}
+                },
+                "bindings": {
+                    "classList.has('main-visible')": {
+                        "<-": "@owner.todos.length > 0"
+                    },
+                    "classList.has('footer-visible')": {
+                        "<-": "@owner.todos.length > 0"
+                    },
+                    "classList.has('clear-completed-visible')": {
+                        "<-": "@owner.todosCompleted.length"
+                    }
                 }
             },
 
@@ -36,32 +47,8 @@
                 }
             },
 
-            "main": {
-                "prototype": "matte/ui/dynamic-element.reel",
-                "properties": {
-                    "element": {"#": "main"}
-                },
-                "bindings": {
-                    "classList.has('visible')": {
-                        "<-": "@owner.todos.length > 0"
-                    }
-                }
-            },
-
-            "footer": {
-                "prototype": "matte/ui/dynamic-element.reel",
-                "properties": {
-                    "element": {"#": "footer"}
-                },
-                "bindings": {
-                    "classList.has('visible')": {
-                        "<-": "@owner.todos.length > 0"
-                    }
-                }
-            },
-
             "toggleAllCheckbox": {
-                "prototype": "native/ui/input-checkbox.reel",
+                "prototype": "montage/ui/checkbox.reel",
                 "properties": {
                     "element": {"#": "toggle-all"}
                 },
@@ -104,20 +91,8 @@
                 }
             },
 
-            "clearCompletedContainer": {
-                "prototype": "matte/ui/dynamic-element.reel",
-                "properties": {
-                    "element": {"#": "clear-completed-container"}
-                },
-                "bindings": {
-                    "classList.has('visible')": {
-                        "<-": "@owner.todosCompleted.length"
-                    }
-                }
-            },
-
             "clearCompletedButton": {
-                "prototype": "native/ui/button.reel",
+                "prototype": "montage/ui/button.reel",
                 "properties": {
                     "element": {"#": "clear-completed"}
                 },
@@ -151,7 +126,7 @@
                     </section>
                     <footer data-montage-id="footer" id="footer">
                         <span id="todo-count"><strong data-montage-id="todo-count">0</strong> <span data-montage-id="todo-count-wording">items</span> left</span>
-                        <div data-montage-id="clear-completed-container" id="clear-completed-container">
+                        <div id="clear-completed-container">
                             <button data-montage-id="clear-completed" id="clear-completed">Clear completed (<span data-montage-id="completed-count">0</span>)</button>
                         </div>
                     </footer>
